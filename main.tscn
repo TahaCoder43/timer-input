@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxvkpc2gemj2f"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_7atpd"]
+[ext_resource type="Texture2D" uid="uid://l2g06kaq7jas" path="res://mdi--timer-play-outline.svg" id="2_syrs5"]
+[ext_resource type="Script" path="res://line_edit.gd" id="2_uhh7m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3afj"]
+bg_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jfdv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b6d3c"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 2
+border_color = Color(0.603923, 0.603923, 0.603923, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 185.0
+offset_bottom = 50.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_7atpd")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+offset_right = 185.0
+offset_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3afj")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+focus_next = NodePath("HBoxContainer/LineEdit")
+focus_previous = NodePath("HBoxContainer/LineEdit")
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 3
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_syrs5")
+expand_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_6jfdv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_b6d3c")
+placeholder_text = "Time"
+script = ExtResource("2_uhh7m")
+
+[connection signal="text_changed" from="PanelContainer/MarginContainer/HBoxContainer/LineEdit" to="PanelContainer/MarginContainer/HBoxContainer/LineEdit" method="_on_text_changed"]
+[connection signal="text_submitted" from="PanelContainer/MarginContainer/HBoxContainer/LineEdit" to="PanelContainer/MarginContainer/HBoxContainer/LineEdit" method="_on_text_submitted"]

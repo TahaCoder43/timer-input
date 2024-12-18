@@ -1,0 +1,32 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="timer-input"
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=185
+window/size/viewport_height=50
+window/size/mode=1
+window/size/transparent=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-vim-joshnajera-12a12fd64534de0cc5cb1f9de1afc9b7e364b317/addons/godot-vim/plugin.cfg")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
